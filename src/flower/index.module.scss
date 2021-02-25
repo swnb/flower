@@ -1,6 +1,11 @@
 $size: 300px;
 $color: #0fd7ff69;
 
+.container {
+  width: $size;
+  height: $size;
+}
+
 @keyframes rotate {
   from {
     transform: rotate3d(1, 1, 1, 0deg);
