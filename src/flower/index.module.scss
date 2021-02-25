@@ -1,0 +1,278 @@
+$size: 300px;
+$color: #0fd7ff69;
+
+@keyframes rotate {
+  from {
+    transform: rotate3d(1, 1, 1, 0deg);
+  }
+
+  50% {
+    transform: rotate3d(1, 1, 1, 180deg);
+  }
+
+  to {
+    transform: rotate3d(1, 1, 1, 360deg);
+  }
+}
+
+@keyframes extend {
+  from {
+    border: 1px solid #59b7f5;
+    transform: rotateZ(0deg) translateZ(0);
+  }
+
+  10% {
+    border: 1px solid #59b7f5;
+    transform: rotateZ(0deg) translateZ(0);
+  }
+
+  20% {
+    border: 1px solid #59b7f500;
+  }
+
+  40% {
+    transform: rotateZ(180deg) translateZ($size/2);
+  }
+
+  60% {
+    transform: rotateZ(180deg) translateZ($size/2);
+  }
+
+  80% {
+    border: 1px solid #59b7f500;
+  }
+
+  90% {
+    border: 1px solid #59b7f5;
+    transform: rotateZ(360deg) translateZ(0);
+  }
+
+  to {
+    border: 1px solid #59b7f5;
+    transform: rotateZ(360deg) translateZ(0);
+  }
+}
+
+$colorStart: #2ceaa780;
+$colorMid: rgba(255, 82, 56, 0.606);
+$colorEnd: #2ceaa780;
+
+@keyframes flower1 {
+  from {
+    border-color: $colorStart transparent transparent transparent;
+    transform: rotateX(0deg);
+  }
+
+  10% {
+    border-color: $colorStart transparent transparent transparent;
+    transform: rotateX(0deg);
+  }
+
+  40% {
+    border-color: $colorMid transparent transparent transparent;
+    transform: rotateX(180deg);
+  }
+
+  60% {
+    border-color: $colorMid transparent transparent transparent;
+    transform: rotateX(180deg);
+  }
+
+  90% {
+    border-color: $colorEnd transparent transparent transparent;
+    transform: rotateX(0deg);
+  }
+
+  to {
+    border-color: $colorEnd transparent transparent transparent;
+    transform: rotateX(0deg);
+  }
+}
+
+@keyframes flower2 {
+  from {
+    border-color: transparent $colorStart transparent transparent;
+    transform: rotateY(0deg);
+  }
+
+  10% {
+    border-color: transparent $colorStart transparent transparent;
+    transform: rotateY(0deg);
+  }
+
+  40% {
+    border-color: transparent $colorMid transparent transparent;
+    transform: rotateY(180deg);
+  }
+
+  60% {
+    border-color: transparent $colorMid transparent transparent;
+    transform: rotateY(180deg);
+  }
+
+  90% {
+    border-color: transparent $colorEnd transparent transparent;
+    transform: rotateY(0deg);
+  }
+
+  to {
+    border-color: transparent $colorEnd transparent transparent;
+    transform: rotateY(0deg);
+  }
+}
+
+@keyframes flower3 {
+  from {
+    border-color: transparent transparent $colorStart transparent;
+    transform: rotateX(0deg);
+  }
+
+  10% {
+    border-color: transparent transparent $colorStart transparent;
+    transform: rotateX(0deg);
+  }
+
+  40% {
+    border-color: transparent transparent $colorMid transparent;
+    transform: rotateX(-180deg);
+  }
+
+  60% {
+    border-color: transparent transparent $colorMid transparent;
+    transform: rotateX(-180deg);
+  }
+
+  90% {
+    border-color: transparent transparent $colorEnd transparent;
+    transform: rotateX(0deg);
+  }
+
+  to {
+    border-color: transparent transparent $colorEnd transparent;
+    transform: rotateX(0deg);
+  }
+}
+
+@keyframes flower4 {
+  from {
+    border-color: transparent transparent transparent $colorStart;
+    transform: rotateY(0deg);
+  }
+
+  10% {
+    border-color: transparent transparent transparent $colorStart;
+    transform: rotateY(0deg);
+  }
+
+  40% {
+    border-color: transparent transparent transparent $colorMid;
+    transform: rotateY(-180deg);
+  }
+
+  60% {
+    border-color: transparent transparent transparent $colorMid;
+    transform: rotateY(-180deg);
+  }
+
+  90% {
+    border-color: transparent transparent transparent $colorEnd;
+    transform: rotateY(0deg);
+  }
+
+  to {
+    border-color: transparent transparent transparent $colorEnd;
+    transform: rotateY(0deg);
+  }
+}
+
+.box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  width: $size;
+  height: $size;
+  transform-style: preserve-3d;
+  animation: rotate 20s linear infinite;
+  transform-origin: 50%;
+
+  & > div {
+    position: absolute;
+    width: $size;
+    box-sizing: border-box;
+    height: $size;
+    transform-origin: 50%;
+    transform-style: preserve-3d;
+    backface-visibility: visible;
+
+    $distance: $size/2;
+
+    &:nth-child(1) {
+      transform: translateZ($distance);
+    }
+
+    &:nth-child(2) {
+      transform: rotateY(90deg) translateZ($distance);
+    }
+
+    &:nth-child(3) {
+      transform: rotateY(180deg) translateZ($distance);
+    }
+
+    &:nth-child(4) {
+      transform: rotateY(270deg) translateZ($distance);
+    }
+
+    &:nth-child(5) {
+      transform: rotateX(90deg) translateZ($distance);
+    }
+
+    &:nth-child(6) {
+      transform: rotateX(-90deg) translateZ($distance);
+    }
+
+    $duration: 15s;
+
+    & > div {
+      position: absolute;
+      width: $size;
+      height: $size;
+      box-sizing: border-box;
+      animation: extend $duration ease-in-out infinite;
+      transform-style: preserve-3d;
+
+      & > div {
+        transform-style: preserve-3d;
+        position: absolute;
+        box-sizing: border-box;
+        width: 0;
+        height: 0;
+        border: $size/2 solid;
+
+        &:nth-child(1) {
+          transform-origin: 50% 0 0;
+
+          animation: flower1 $duration ease-in-out infinite;
+        }
+
+        &:nth-child(2) {
+          transform-origin: 100% 50% 0;
+          animation: flower2 $duration ease-in-out infinite;
+        }
+
+        &:nth-child(3) {
+          transform-origin: 50% 100% 0;
+          animation: flower3 $duration ease-in-out infinite;
+        }
+
+        &:nth-child(4) {
+          transform-origin: 0 50% 0;
+          border-color: transparent transparent transparent $color;
+          animation: flower4 $duration ease-in-out infinite;
+        }
+      }
+    }
+  }
+}
