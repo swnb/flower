@@ -4,6 +4,10 @@
   height: 100vh;
 }
 
+body {
+  perspective: 10000spx;
+}
+
 h1 {
   text-align: center;
 }
